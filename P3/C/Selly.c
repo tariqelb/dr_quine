@@ -30,19 +30,32 @@ void	print_content(FILE *f)
 	}
 }
 
-int	main(int ac, char **av)
+int	main()
 {
-	char filename[10] = {'S','e','l','l','y','_', (X + 48 - 1),'.','c',0};
-	FILE	*f;	
-	int	c = strlen(av[0]);
+	FILE	*f;
 
-	if (X == 0)
+	if (X <= 0)
 		return (0);
-	f = fopen(filename, "w");
-	if (f)
+	
+	if (X > 0)
 	{
-		print_content(f);
-		fclose(f);
+		char filename[10] = {'S','e','l','l','y','_', (X + 48 - 1),'.','c',0};
+		char executable[8] = {'S','e','l','l','y','_', (X + 48 - 1),0};
+
+		f = fopen(filename, "w");
+		if (f)
+		{
+			//print_content(f);
+			fclose(f);
+		}
+		char command1[100] = "gcc -o ";
+		char command2[100] = "./";
+		strcat(command1, executable);
+		strcat(command1, " ");
+		strcat(command1, filename);
+		strcat(command2, executable);
+		system(cammand1);
+		system(command2);
 	}
 	return (0);
 }
